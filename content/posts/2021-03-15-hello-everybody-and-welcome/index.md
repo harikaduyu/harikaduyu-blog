@@ -1,8 +1,9 @@
 ---
-title: My first post using Novela by Narative
+title: Hello everybody and welcome
 author: Harika Duyu
-date: 2019-04-30
-hero: ./images/hero.jpg
+date: 2021-03-15
+hero: ./images/article-image-1.jpg
+excerpt: I am very excited to write my first blog post
 ---
 
 My first post using `@narative/gatsby-theme-novela`. Novela is built by the team at [Narative](https://narative.co), and built for everyone that loves the web.
