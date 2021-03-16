@@ -2,7 +2,7 @@
 title: Algorithmic Time Complexity
 author: Harika Duyu
 date: 2021-03-18
-hero: ./images/hero.jpg
+hero: ./images/clock.jpg
 ---
 
 
@@ -11,7 +11,7 @@ hero: ./images/hero.jpg
 
 In the simplest terms, it measures how well the algorithm scales. It also describes the worst case scenerio based on the amount of input an algorithm takes. There are other types of notations which I'll also explain in a section below.
 
-
+[Cheat Sheet](https://www.bigocheatsheet.com/)
 
 ## Meaning of different notations with some examples
 
