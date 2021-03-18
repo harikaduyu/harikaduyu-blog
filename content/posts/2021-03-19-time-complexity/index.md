@@ -32,9 +32,26 @@ There you go. In this example, it doesn't matter how big your input gets, it wil
 
 ### O(N) - Linear Time
 
-This is an algorithm, in which the completion time grows proportional to the input.
+This is an algorithm, in which the completion time grows proportional to the input. Let's write a function that takes an list and prints each element. As the list size grows, the completion time also grows but relative to it.
+
+```py
+def print_elements(my_list):
+    for value in my_list:
+        print(f"The current item is {value}")
+```
+
+If the list has 10 items, we'll print 10 values. If the list has 50 elements, we'll print 50 values etc.
 
 ### O(N^2) - Quadratic Time
+
+Let's say now, we have the same list but this time, we would like to see the each pair combination created by its items.
+
+```py
+def print_elements(my_list):
+    for first_value in my_list:
+        for second_value in my_list:
+            print(f"The current values are {first_value} and {second_value}")
+```
 
 ### O(log n) – Logarithmic Time
 
