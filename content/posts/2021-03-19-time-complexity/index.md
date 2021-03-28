@@ -5,36 +5,75 @@ date: 2021-03-18
 hero: ./images/clock.jpg
 ---
 
-## What is this famous big O notation exactly?
+## What is this famous big Oh notation exactly?
 
-In the simplest terms, it measures how well the algorithm scales. It also describes the worst case scenerio based on the amount of input an algorithm takes. There are other types of notations which I'll also explain in a section below.
+In the simplest terms, it measures how well the algorithm scales. It also describes the worst case scenerio based on the amount of input an algorithm takes. There are other types of notations which I'll also explain below.
 
-In mathematical terms, a function <img src="http://www.sciweavers.org/tex2img.php?eq=f%28n%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="f(n)" width="36" height="19" /> is <img src="http://www.sciweavers.org/tex2img.php?eq=O%28g%28n%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="O(g(n))" width="67" height="19" /> if there is a constant <img src="https://bit.ly/3eStqhx" align="center" border="0" alt="C" width="17" height="15" /> and some initial value <img src="http://www.sciweavers.org/tex2img.php?eq=%20n_%7B0%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" n_{0} " width="22" height="15" />, such that <img src="https://bit.ly/3lvTArL" align="center" border="0" alt="f(n)  \leq  Cg(n)" width="107" height="19" /> for all <img src="http://www.sciweavers.org/tex2img.php?eq=n%20%20%20%3E%20%20%20n_%7B0%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="n   >   n_{0} " width="56" height="15" />.
+### In Academia
 
-Let's look at it in an example. Take the function <img src="http://www.sciweavers.org/tex2img.php?eq=f%28n%29%20%3D%204%20n%5E%7B2%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="f(n) = 4 n^{2} " width="89" height="22" />
+#### Big O (O()) describes the upper bound of the complexity
 
-f(n) = 4n^2 + 7n + 2
+In mathematical terms, a function f(n) is O(g(n)) if there is a constant C and some initial value n0 such that f(n) <= Cg(n) for all n > n0.
+
+Let's look at it in an example. Take the function f(n) = 4n^2 + 16n + 2
 and we'll ask ourselves,
-Is f(n) O(n^4)? To answer this question we'll look at this expression 4n^2 + 7n + 2 < Cn^4 and we'll try to find out if there is a constant C that satisfies this expression.
+Is f(n) O(n^4)? To answer this question we'll look at this expression 4n^2 + 16n + 2 < Cn^4 and we'll try to find out if there is a constant C that satisfies this expression.
 
-### Take C = 1
+Let's take C = 1
 
 | n   | 4n^2 + 16n + 2 < n^4 | Is it True |
 | --- | -------------------- | ---------- |
 | 0   | 2 < 0                | False      |
-| 1   | 13 < 1               | False      |
-| 2   | 32 < 16              | False      |
-| 3   | 59 < 81              | False      |
-| 4   | 94 < 256             | True       |
+| 1   | 22 < 1               | False      |
+| 2   | 50 < 16              | False      |
+| 3   | 86 < 81              | False      |
+| 4   | 130 < 256            | True       |
 
-So for n0 >= 4 the statement above becomes true. Then the answer to the question above (is this function big O(n^4)?) is YES.
+So for n0 >= 4 the statement above becomes true. Then the answer to the question above (is this function big O(n^4)?) is YES. And if we could never find a constant and a particular n0 so that this statement becomes true forever, then the answer would be NO.
 
-## Meaning of different notations
+#### Omega (Ω()) describes the lower bound of the complexity
 
-- Big O (O()) describes the upper bound of the complexity.
-- Omega (Ω()) describes the lower bound of the complexity.
-- Theta (Θ()) describes the exact bound of the complexity.
-- Little O (o()) describes the upper bound excluding the exact bound.
+A function f(n) is Ω(g(n)) if there is a constant C and some initial value n0 such that f(n) >= Cg(n) for all n > n0. Let's look at the same example function as above
+
+f(n) = 4n^2 + 16n + 2
+
+Is f(n), Ω(n^2)?
+
+Now, we need to come up with a constant C and an initial value of n (n0) such that 4n^2 + 16n + 2 >= C \* n^2. As for this example it is pretty straightforward when C = 1, 4n^2 + 16n + 2 > n^2 will always be true for every n > 0. Then we can say, f(n) is Ω(n^2) for this example.
+
+Let's try another example with the same function f(n) = 4n^2 + 16n + 2 and ask ourselves,
+
+Is f(n), Ω(n^3)?
+
+In another words, is there a constant C and an initial value of n (n0), such that 4n^2 + 16n + 2 > C \* n^3 will always be true for n > n0?
+
+As n gets really big, 7n + 2 will lose importance compared to 4n^2 in f(n), as 4n^2 is the dominating term. Since C > 1 , 4n^2 won't be able to keep up with n^3 and we can say that there is no such initial value of n where 4n^2 + 16n + 2 > C \* n^3 is true for all n > n0. Therefore, f(n) is not Ω(n^3).
+
+#### Theta (Θ()) describes the exact bound of the complexity
+
+This is where, we combine Big Oh and Omega. A function f(n) is Θ(g(n)), if and only if both of the following statements are true.
+
+1. f(n) is O(g(n))
+1. f(n) is Ω(g(n))
+
+Let's look at the same function f(n) = 4n^2 + 16n + 2 and check if it is Θ(n^2). We already know that it's Ω(n^2) from previous section. We just need to check if f(n) is O(n^2). Is there a constant C, and an initial value of n (n0) that 4n^2 + 16n + 2 <= Cn^2 is true for every n > n0?
+
+Let's take C = 5
+
+| n   | 4n^2 + 16n + 2 < 5 n^2 | Is it True |
+| --- | ---------------------- | ---------- |
+| 0   | 2 < 0                  | False      |
+| 1   | 22 < 5                 | False      |
+| 2   | 50 < 20                | False      |
+| 3   | 130 < 45               | False      |
+| ... | ...                    | ...        |
+| 17  | 1430 < 1445            | True       |
+
+4n^2 + 16n + 2 < 5 n^2 will be true for every n > 17, therefore f(n) is O(n^2) as well, which means our function f(n) is Θ(n^2).
+
+### In Industry
+
+What people mean by big O is actually closer to what Θ means in academia. So, Big Oh is the tightest description of the runtime of an algorithm.
 
 ## Different Complexity Classes with Some Examples
 

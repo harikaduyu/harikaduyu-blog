@@ -21,6 +21,10 @@ module.exports = {
         name: `linkedin`,
         url: `https://www.linkedin.com/in/harikaduyu/`,
       },
+      {
+        name: `url`,
+        url: `https://harikaduyu.com/`,
+      },
     ],
   },
   plugins: [
